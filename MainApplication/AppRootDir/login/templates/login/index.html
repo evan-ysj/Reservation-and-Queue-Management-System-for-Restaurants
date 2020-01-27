@@ -1,0 +1,9 @@
+{% extends 'login/base.html' %}
+{% block title %}主页{% endblock %}
+{% block content %}
+    {% if request.session.is_login %}
+        <h1>Hello,{{ request.session.user_name }}! Welcome back!</h1>
+    {% else %}
+        <h1>Public Content</h1>
+    {% endif %}
+{% endblock %}
