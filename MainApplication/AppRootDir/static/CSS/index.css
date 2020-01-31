@@ -1,0 +1,8 @@
+section {
+    background: url(../images/bg_1.jpg) no-repeat fixed;
+}
+
+#first-page {
+    background: url(../images/bg_3.jpg);
+    background-size: cover;
+}
