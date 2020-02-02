@@ -1,7 +1,7 @@
 from django import forms
 
 class UserForm(forms.Form):
-    username = forms.CharField(label="User Name", 
+    username = forms.CharField(label="Username/Email", 
                                max_length=128, 
                                widget=forms.TextInput(attrs = {'class': 'form-control'}))
     password = forms.CharField(label="Password", 
@@ -10,7 +10,13 @@ class UserForm(forms.Form):
     
     
 class RegisterForm(forms.Form):
-    username = forms.CharField(label="User Name", 
+    username = forms.CharField(label="Username", 
+                               max_length=128, 
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+    firstname = forms.CharField(label="First Name", 
+                               max_length=128, 
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+    lastname = forms.CharField(label="Last Name", 
                                max_length=128, 
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
     password1 = forms.CharField(label="Password", 

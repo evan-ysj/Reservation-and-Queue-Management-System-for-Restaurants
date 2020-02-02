@@ -47,7 +47,7 @@
                   <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                   <li class="nav-item"><a href="/login/" class="nav-link">Book a Table</a></li>
                   <li class="nav-item"><a href="#" class="nav-link"><i class="zmdi zmdi-shopping-basket zmdi-hc-2x"></i></a></li>
-                  <li class="nav-item"><a href="#" class="nav-link">{{ request.session.user_name }}</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link">welcome back, {{ request.session.first_name }}</a></li>
                   <li class="nav-item"><a href="/logout/" class="nav-link">sign out</a></li>
                   {% else %}
                   <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
