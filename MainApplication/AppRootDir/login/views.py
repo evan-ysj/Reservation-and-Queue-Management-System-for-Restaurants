@@ -8,7 +8,6 @@ import hashlib
 
 
 def index(request):
-    pass
     return render(request,'login/index.html')
 
 def login(request):
@@ -34,7 +33,7 @@ def login(request):
                 if user.password == hash_code(password):
                     return redirect('/index/')
                 else:
-                    message = 'Incorrect passwotd!'
+                    message = 'Incorrect password!'
             except:
                 try:
                     # Login by email
@@ -47,7 +46,7 @@ def login(request):
                     if user.password == hash_code(password):
                         return redirect('/index/')
                     else:
-                        message = 'Incorrect passwotd!'
+                        message = 'Incorrect password!'
                 except:
                     message = 'Username does not exist!'
         return render(request, 'login/login.html', locals())
