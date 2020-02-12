@@ -21,7 +21,7 @@ CoverageTest:
   stage: unittest
   script:
     - "echo 'coverage_test start!'"
-    - "coverage run --source='.' ./MainApplication/AppRootDir/manage.py test myapp"
+    - "python3 -m coverage run --source='.' ./MainApplication/AppRootDir/manage.py test myapp"
     - "coverage report"
  #   - "coverage erase"
     
