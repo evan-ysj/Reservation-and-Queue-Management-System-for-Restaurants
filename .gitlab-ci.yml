@@ -14,14 +14,13 @@ before_script:
 UnitTest:
   stage: unittest
   script:
+    - "python3 ./MainApplication/AppRootDir/manage.py makemigrations"
+    - "python3 ./MainApplication/AppRootDir/manage.py migrate"
     - "python3 ./MainApplication/AppRootDir/manage.py test --verbosity 2"
-    - "cd ./MainApplication/AppRootDir && ls"
 
-    
 CoverageTest:
   stage: unittest
   script:
-    - "echo 'coverage_test start!'"
     - "python3 -m coverage run --source='.' ./MainApplication/AppRootDir/manage.py test"
     - "python3 -m coverage report"
  #   - "python3 -m coverage erase"
