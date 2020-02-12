@@ -14,8 +14,8 @@ before_script:
 UnitTest:
   stage: unittest
   script:
-    - "pwd"
     - "python3 ./MainApplication/AppRootDir/manage.py test --verbosity 2"
+    - "cd ./MainApplication/AppRootDir && ls"
 
     
 CoverageTest:
