@@ -1,0 +1,37 @@
+stages:
+  - unittest
+  - ci
+
+cache:
+  paths:
+    - "~/.cache/pip/"
+
+before_script:
+  - "python3 -V"
+  - "python3 -m django --version"
+  - "pip3 show pymysql"
+  - "echo $CI_JOB_ID / $GITLAB_USER_EMAIL"
+
+
+UnitTest:
+  stage: unittest
+  script:
+    - "echo 'unit_test start!'"
+    - "python3 ./MainApplication/AppRootDir/manage.py test --verbosity 2"
+
+    
+CoverageTest:
+  stage: unittest
+  script:
+    - "echo 'coverage_test start!'"
+    - "coverage run --source='.' ./MainApplication/AppRootDir/manage.py test myapp"
+    - "coverage report"
+ #   - "coverage erase"
+    
+IntegrationTest:
+  stage: ci
+  script:
+    - "echo 'integration_test start!'"
+    #    - "python3 ./MainApplication/AppRootDir/manage.py check --verbosity 2"
+    #    - 
+    - "echo 'integration_test end!'"
