@@ -16,7 +16,7 @@ UnitTest:
   script:
     - "python3 ./MainApplication/AppRootDir/manage.py makemigrations"
     - "python3 ./MainApplication/AppRootDir/manage.py migrate"
-    - "python3 ./MainApplication/AppRootDir/manage.py test --verbosity 2"
+    - "python3 ./MainApplication/AppRootDir/manage.py test"
 
 CoverageTest:
   stage: unittest
