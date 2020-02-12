@@ -7,16 +7,13 @@ cache:
     - "~/.cache/pip/"
 
 before_script:
-  - "python3 -V"
-  - "python3 -m django --version"
-  - "pip3 show pymysql"
+  - "python3 -V && python3 -m django --version"
   - "echo $CI_JOB_ID / $GITLAB_USER_EMAIL"
 
 
 UnitTest:
   stage: unittest
   script:
-    - "echo 'unit_test start!'"
     - "python3 ./MainApplication/AppRootDir/manage.py test --verbosity 2"
 
     
