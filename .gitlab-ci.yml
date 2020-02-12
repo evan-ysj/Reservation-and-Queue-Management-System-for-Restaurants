@@ -14,14 +14,14 @@ before_script:
 UnitTest:
   stage: unittest
   script:
-    - "python3 ./MainApplication/AppRootDir/manage.py test --verbosity 2"
+    - "python3 ros/MainApplication/AppRootDir/manage.py test --verbosity 2"
 
     
 CoverageTest:
   stage: unittest
   script:
     - "echo 'coverage_test start!'"
-    - "python3 -m coverage run --source='.' ./MainApplication/AppRootDir/manage.py test myapp"
+    - "python3 -m coverage run --source='.' ./MainApplication/AppRootDir/manage.py test"
     - "coverage report"
  #   - "coverage erase"
     
@@ -29,6 +29,6 @@ IntegrationTest:
   stage: ci
   script:
     - "echo 'integration_test start!'"
-    #    - "python3 ./MainApplication/AppRootDir/manage.py check --verbosity 2"
+    #    - "python3 ros/MainApplication/AppRootDir/manage.py check --verbosity 2"
     #    - 
     - "echo 'integration_test end!'"
