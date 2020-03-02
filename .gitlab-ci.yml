@@ -1,5 +1,6 @@
 stages:
   - unittest
+  - coveragetest
   - ci
 
 cache:
@@ -18,7 +19,7 @@ UnitTest:
     - "python3 manage.py test  --verbosity 2"
 
 CoverageTest:
-  stage: unittest
+  stage: coveragetest
   script:
     - "cd ./MainApplication/AppRootDir/"
     - "python3 -m coverage run --source='.' manage.py test"
