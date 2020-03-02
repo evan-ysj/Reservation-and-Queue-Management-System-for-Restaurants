@@ -11,40 +11,49 @@ class User_Form_Register_Form_Test(TestCase):
     def test_UserForm_valid(self):
         form = UserForm(
             data={
-                "Username/Email": "Harold",
+                "username": "Harold",
                 "password": "123456qubit"
             }
         )
         #                                form.save()
-        # print(form.errors)
+
         self.assertTrue(form.is_valid())
 
     def test_RegisterForm_valid(self):
         form = RegisterForm(
             data={
                 "username": "harold",
-                "first_name": "Harold",
-                "last_name": "Shi",
+                "firstname": "Harold",
+                "lastname": "Shi",
                 "password1": "123456qubit",
                 "password2": "123456qubit",
                 "email": "j85shi@uwaterloo.ca"
             }
         )
-        #                                form.save()
-        # print(form.errors)
         self.assertTrue(form.is_valid())
 
-    def test_RegisterForm_invalid(self):
+    def test_RegisterForm_miss_fields(self):
         form = RegisterForm(
             data={
                 "username": "harold",
-                "last_name": "Shi",
+                "lastname": "Shi",
                 "password1": "123456qubit",
                 "password2": "123456qubit",
                 "email": "j85shi@uwaterloo.ca"
             }
         )
-        #                                form.save()
-        # print(form.errors)
         self.assertFalse(form.is_valid())
 
+#    def test_RegisterForm_extra_fields(self):
+#        form = RegisterForm(
+#            data={
+#                "username": "harold",
+#                "firstname": "Harold",
+#                "lastname": "Shi",
+#                "password1": "123456qubit",
+#                "password2": "123456qubit",
+#                "email": "j85shi@uwaterloo.ca",
+#                "extra": "extra"
+#            }
+#        )
+#        self.assertFalse(form.is_valid())
