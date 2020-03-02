@@ -8,7 +8,7 @@ cache:
     - "~/.cache/pip/"
 
 before_script:
-  - "mysql -u root -p ece651db drop test_django"
+  - "mysql -u root -p ece651db -e \"drop database test_django\""
   - "python3 -V && python3 -m django --version"
   - "echo $CI_JOB_ID / $GITLAB_USER_EMAIL"
 
