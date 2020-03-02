@@ -12,7 +12,7 @@ def index(request):
 
 def login(request):
     if request.session.get('is_login',None):
-        return redirect('/index')
+        return redirect('/index/')
     if request.method == 'POST':
         login_form = UserForm(request.POST)
         message = 'Please check the input fields!'
@@ -25,12 +25,13 @@ def login(request):
             try:
                 # Login by username
                 user = models.User.objects.get(name=username)
-                request.session['is_login'] = True
+                
                 request.session['user_id'] = user.id
                 request.session['user_name'] = user.name
                 request.session['first_name'] = user.first_name
                 request.session['last_name'] = user.last_name
                 if user.password == hash_code(password):
+                    request.session['is_login'] = True
                     return redirect('/index/')
                 else:
                     message = 'Incorrect password!'
@@ -38,12 +39,13 @@ def login(request):
                 try:
                     # Login by email
                     user = models.User.objects.get(email=username)
-                    request.session['is_login'] = True
+                   
                     request.session['user_id'] = user.id
                     request.session['user_name'] = user.name
                     request.session['first_name'] = user.first_name
                     request.session['last_name'] = user.last_name
                     if user.password == hash_code(password):
+                        request.session['is_login'] = True
                         return redirect('/index/')
                     else:
                         message = 'Incorrect password!'
