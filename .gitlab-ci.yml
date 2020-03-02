@@ -8,6 +8,7 @@ cache:
     - "~/.cache/pip/"
 
 before_script:
+  - "mysqladmin -u root -p \"ece651\" drop test_django"
   - "python3 -V && python3 -m django --version"
   - "echo $CI_JOB_ID / $GITLAB_USER_EMAIL"
 
