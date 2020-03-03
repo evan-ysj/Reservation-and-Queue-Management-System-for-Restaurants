@@ -1,0 +1,50 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block title %}Sign up for membership{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+          <form class='form-register' action="/register/" method="post">
+
+              {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+
+              {% csrf_token %}
+
+              <h3 class="text-center">Welcome to sign up!</h3>
+              <div class="form-group">
+                  {{ register_form.username.label_tag }}
+                  {{ register_form.username}}
+              </div>
+              <div class="form-group">
+                  {{ register_form.firstname.label_tag }}
+                  {{ register_form.firstname}}
+              </div>
+              <div class="form-group">
+                  {{ register_form.lastname.label_tag }}
+                  {{ register_form.lastname}}
+              </div>
+              <div class="form-group">
+                  {{ register_form.password1.label_tag }}
+                  {{ register_form.password1 }}
+              </div>
+              <div class="form-group">
+                  {{ register_form.password2.label_tag }}
+                  {{ register_form.password2 }}
+              </div>
+              <div class="form-group">
+                  {{ register_form.email.label_tag }}
+                  {{ register_form.email }}
+              </div>
+
+              <button type="reset" class="btn btn-default pull-left">Reset</button>
+              <button type="submit" class="btn btn-primary pull-right" id="submit">Submit</button>
+
+          </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}
