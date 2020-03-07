@@ -31,6 +31,7 @@ def login(request):
                 request.session['user_name'] = user.name
                 request.session['first_name'] = user.first_name
                 request.session['last_name'] = user.last_name
+                request.session['email'] = user.email
                 if user.password == hash_code(password):
                     return redirect('/index/')
                 else:
@@ -44,6 +45,7 @@ def login(request):
                     request.session['user_name'] = user.name
                     request.session['first_name'] = user.first_name
                     request.session['last_name'] = user.last_name
+                    request.session['email'] = user.email
                     if user.password == hash_code(password):
                         return redirect('/index/')
                     else:
@@ -99,6 +101,16 @@ def logout(request):
     if not request.session.get('is_login', None):
         return redirect("/index/")
     request.session.flush()
+    return redirect('/index/')
+
+def profile(request):
+    return render(request,'login/profile.html')
+
+def deleteuser(request):
+    name_db = models.User.objects.filter(name=request.session['user_name'])
+    if name_db:
+        name_db.delete()
+        request.session.flush()
     return redirect('/index/')
 
 def hash_code(s, salt='ece651'):

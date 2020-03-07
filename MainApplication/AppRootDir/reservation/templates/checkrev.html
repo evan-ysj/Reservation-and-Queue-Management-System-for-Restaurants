@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Personal Homepage{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/checkrev.css' %}">
+    <link href="{% static 'css/bootstrap-table.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="control-cell">  
+
+    <h4 class="title">My Reservations</h4>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Reserv No.</th>
+                <th>Num of Diners</th>
+                <th>Username</th>
+                <th>Dining Date</th>
+                <th>Request Time</th>
+                <th>Expired</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reservations %}
+            <tr>
+                <td>{{ r.rsv_number }}</td>
+                <td>{{ r.no_of_guests }}</td>
+                <td>{{ r.user }}</td>
+                <td>{{ r.date }}</td>
+                <td>{{ r.rsv_time }}</td>
+                <td>
+                    {% if r.expired %}
+                    <p style='color:darkred;'>Expired</p>
+                    {% else %}
+                    Valid
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+    </div>
+</div>
+
+{% endblock %}

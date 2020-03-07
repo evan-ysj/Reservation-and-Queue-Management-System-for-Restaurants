@@ -1,11 +1,25 @@
+.container{
+
+    margin: 20px auto;
+    padding: 0 15px;
+
+}
+
+.control-cell{
+    max-width: 800px;
+    margin: auto;
+}
+
 .col-md-4 {
     margin: 0 auto;
 }
 .form-login {
     max-width: 330px;
+    margin: auto;
 }
 .form-register {
     max-width: 330px;
+    margin: auto;
 }
 .form-login .form-control {
     position: relative;
@@ -55,10 +69,25 @@ button {
     margin-top: 20px;
     margin-bottom: 50px;
 }
-.text-center {
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
+
 #submit {
     float: right;
+}
+
+#booktable{
+    margin-top: 20px;
+}
+
+label{
+    margin:5px 10px;
+}
+
+.title{
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+    color: #fac564;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
 }

@@ -1,0 +1,21 @@
+.contianer{
+    margin: 30px auto;
+    max-width: 800px;
+    text-align:center;
+}
+
+.choice{
+    margin: 20px auto;
+}
+
+h3{
+    margin: 0 auto;
+    color: #fac564;
+}
+
+.sign{
+    width: 30px;
+    height: 30px;
+    margin: 0 15px;
+}
+

@@ -1,17 +1,15 @@
-{% extends 'login/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}Account sign in{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
-
-
 {% block content %}
     <div class="container">
-        <div class="col-md-4 col-md-offset-4" id="control-box">
+        <div class="control-cell">
+        <h4 class="title">Member Sign In</h4>
           <form class='form-login' action="/login/" method="post">
               {% csrf_token %}
-              <h3 class="text-center">Member Sign In</h3>
               {% if message %}
               <div class="alert alert-warning">{{ message }}</div>
               {% endif %}

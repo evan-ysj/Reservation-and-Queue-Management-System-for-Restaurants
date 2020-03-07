@@ -16,12 +16,18 @@ Including another URLconf
 
 from django.conf.urls import url
 from django.contrib import admin
-from login import views
+from login import views as lv
+from reservation import views as rv
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', views.index),
-    url(r'^login/', views.login),
-    url(r'^register/', views.register),
-    url(r'^logout/', views.logout),
+    url(r'^index/', lv.index),
+    url(r'^login/', lv.login),
+    url(r'^register/', lv.register),
+    url(r'^logout/', lv.logout),
+    url(r'^profile/', lv.profile),
+    url(r'^deleteuser/', lv.deleteuser),
+    url(r'^booktable/', rv.booktable),
+    url(r'^booksuccess/', rv.booksuccess),
+    url(r'^checkrev/', rv.checkrev),
 ]
