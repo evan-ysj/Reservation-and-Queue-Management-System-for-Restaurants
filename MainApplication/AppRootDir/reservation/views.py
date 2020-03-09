@@ -5,6 +5,8 @@ import datetime
 
 # Create your views here.
 def booktable(request):
+    if not request.session.get('is_login', None):
+        return redirect('/login/')
     if request.method == 'POST':
         reservation_form = ReservationForm(request.POST)
         message = 'Please check the input fields!'
@@ -39,6 +41,7 @@ def booktable(request):
             except Exception as e:
                 #print(e)
                 message = 'Book table failed. Please check the input fields!'
+                return render(request, 'booktable.html', locals())
     reservation_form = ReservationForm()
     return render(request, 'booktable.html', locals())
 

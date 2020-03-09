@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^booktable/', rv.booktable, name='booktable'),
     url(r'^booksuccess/', rv.booksuccess, name='booksuccess'),
     url(r'^checkrev/', rv.checkrev, name='checkrev'),
+    url(r'^nofunction/', lv.notfount, name='notfound')
 ]
 

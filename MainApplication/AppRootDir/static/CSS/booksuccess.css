@@ -1,7 +1,8 @@
-.contianer{
-    margin: 30px auto;
+.main{
+    margin:  auto;
     max-width: 800px;
     text-align:center;
+    padding-top: 30px;
 }
 
 .choice{

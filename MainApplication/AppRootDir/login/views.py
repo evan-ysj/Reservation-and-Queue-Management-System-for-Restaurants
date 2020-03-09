@@ -8,11 +8,12 @@ import hashlib
 
 
 def index(request):
+    pass
     return render(request,'login/index.html')
 
 def login(request):
-    if request.session.get('is_login',None):
-        return redirect('/index/')
+    if request.session.get('is_login', None):
+        return redirect('/index')
     if request.method == 'POST':
         login_form = UserForm(request.POST)
         message = 'Please check the input fields!'
@@ -25,32 +26,30 @@ def login(request):
             try:
                 # Login by username
                 user = models.User.objects.get(name=username)
-                
+                request.session['is_login'] = True
                 request.session['user_id'] = user.id
                 request.session['user_name'] = user.name
                 request.session['first_name'] = user.first_name
                 request.session['last_name'] = user.last_name
                 request.session['email'] = user.email
                 if user.password == hash_code(password):
-                    request.session['is_login'] = True
                     return redirect('/index/')
                 else:
-                    message = 'Incorrect password!'
+                    message = 'Incorrect passwotd!'
             except:
                 try:
                     # Login by email
                     user = models.User.objects.get(email=username)
-                   
+                    request.session['is_login'] = True
                     request.session['user_id'] = user.id
                     request.session['user_name'] = user.name
                     request.session['first_name'] = user.first_name
                     request.session['last_name'] = user.last_name
                     request.session['email'] = user.email
                     if user.password == hash_code(password):
-                        request.session['is_login'] = True
                         return redirect('/index/')
                     else:
-                        message = 'Incorrect password!'
+                        message = 'Incorrect passwotd!'
                 except:
                     message = 'Username does not exist!'
         return render(request, 'login/login.html', locals())
@@ -113,6 +112,9 @@ def deleteuser(request):
         name_db.delete()
         request.session.flush()
     return redirect('/index/')
+
+def notfount(request):
+    return render(request, 'nofunction.html')
 
 def hash_code(s, salt='ece651'):
     h = hashlib.sha256()

@@ -6,4 +6,5 @@ class ReservationForm(forms.Form):
                                                                 'placeholder':'Range: 0-10'}))
     bookdate = forms.DateField(label="Pick a Date", 
                                widget=forms.DateInput(attrs = {'class': 'form-control',
+                                                                'id': 'date_pick',
                                                                 'placeholder':'Format: YYYY-MM-DD'}))
