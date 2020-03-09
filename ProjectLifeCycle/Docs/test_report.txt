@@ -1,0 +1,63 @@
+$ python3 manage.py test  --verbosity 2
+Creating test database for alias 'default' ('test_django')...
+test_RegisterForm_miss_fields (login.tests.test_forms.User_Form_Register_Form_Test) ... ok
+test_RegisterForm_valid (login.tests.test_forms.User_Form_Register_Form_Test) ... ok
+test_UserForm_valid (login.tests.test_forms.User_Form_Register_Form_Test) ... ok
+test_c_time_label (login.tests.test_models.UserModelTes) ... ok
+test_email_label (login.tests.test_models.UserModelTes) ... ok
+test_name_label (login.tests.test_models.UserModelTes) ... ok
+test_name_max_length (login.tests.test_models.UserModelTes) ... ok
+test_object_name_is_name (login.tests.test_models.UserModelTes) ... ok
+test_password_label (login.tests.test_models.UserModelTes) ... ok
+test_password_max_length (login.tests.test_models.UserModelTes) ... ok
+test_user_created (login.tests.test_views.loginViewTest) ... ok
+test_view_index (login.tests.test_views.loginViewTest) ... ok
+test_view_login_already_logged_in (login.tests.test_views.loginViewTest) ... ok
+test_view_login_bad_password (login.tests.test_views.loginViewTest) ... ok
+test_view_login_email (login.tests.test_views.loginViewTest) ... ok
+test_view_login_name (login.tests.test_views.loginViewTest) ... ok
+test_view_login_nonexist_user (login.tests.test_views.loginViewTest) ... ok
+test_view_login_page (login.tests.test_views.loginViewTest) ... ok
+test_view_logout (login.tests.test_views.loginViewTest) ... ok
+test_view_logout_logged_in (login.tests.test_views.loginViewTest) ... ok
+test_view_register (login.tests.test_views.loginViewTest) ... ok
+test_view_register_already_logged_in (login.tests.test_views.loginViewTest) ... ok
+test_view_register_blank (login.tests.test_views.loginViewTest) ... ok
+test_view_register_password_mismatch (login.tests.test_views.loginViewTest) ... ok
+test_view_register_same_email_user (login.tests.test_views.loginViewTest) ... ok
+test_view_register_same_name_user (login.tests.test_views.loginViewTest) ... ok
+test_view_register_success (login.tests.test_views.loginViewTest) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.349s
+
+OK
+
+
+
+
+
+
+Name                                          Stmts   Miss  Cover
+-----------------------------------------------------------------
+login/__init__.py                                 2      0   100%
+login/admin.py                                    3      0   100%
+login/apps.py                                     3      3     0%
+login/forms.py                                   11      0   100%
+login/migrations/0001_initial.py                  5      0   100%
+login/migrations/0002_auto_20200202_0407.py       4      0   100%
+login/migrations/__init__.py                      0      0   100%
+login/models.py                                  14      0   100%
+login/tests/__init__.py                           0      0   100%
+login/tests/test_forms.py                        16      0   100%
+login/tests/test_models.py                       33      0   100%
+login/tests/test_views.py                       101      0   100%
+login/views.py                                   85      1    99%
+manage.py                                        12      2    83%
+mysite/__init__.py                                2      0   100%
+mysite/asgi.py                                    4      4     0%
+mysite/settings.py                               19      0   100%
+mysite/urls.py                                    4      0   100%
+mysite/wsgi.py                                    4      4     0%
+-----------------------------------------------------------------
+TOTAL                                           322     14    96%
