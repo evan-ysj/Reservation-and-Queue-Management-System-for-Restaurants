@@ -1,11 +1,24 @@
+.main{
+    margin: auto;
+    padding: 20px 15px;
+
+}
+
+.control-cell{
+    max-width: 800px;
+    margin: auto;
+}
+
 .col-md-4 {
     margin: 0 auto;
 }
 .form-login {
     max-width: 330px;
+    margin: auto;
 }
 .form-register {
     max-width: 330px;
+    margin: auto;
 }
 .form-login .form-control {
     position: relative;
@@ -52,13 +65,51 @@ input[type="email"] {
 }
 
 button {
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 50px;
 }
-.text-center {
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
+
 #submit {
     float: right;
+    width: 49%;
+}
+
+#reset {
+    width: 49%;
+}
+
+#booktable{
+    width: 100%;
+}
+
+label{
+    margin:5px 10px;
+}
+
+.title{
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+    color: #fac564;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
+}
+
+.result{
+    font-size: 18px;
+    color: #fac564;
+    text-align: center;
+}
+
+#checkstate{
+    width: 100%;
+}
+
+#takeno{
+    width: 100%;
+}
+
+#chpasswd{
+    width: 100%;
 }

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Wait state{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="control-cell">
+        <h4 class="title">Check current waiting state</h4>
+        <form method="POST" class="form-login" id="checkstate-form" action="/checkstate/">
+            {% csrf_token %}
+            {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            {% if result >= 0 %}
+                  <div class="result">
+                      <p>There are </p>
+                      <h1 style="color: white;font-size: 50px;">{{ result }}</h1>
+                      <p> more guests in front of you</p>
+                  </div>
+            {% endif %}
+            <div class="form-group">
+                {{ checkstate_form.number }}
+            </div>
+            <div class="form-group form-button">
+                <button type="submit" class="btn btn-primary" id="checkstate">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

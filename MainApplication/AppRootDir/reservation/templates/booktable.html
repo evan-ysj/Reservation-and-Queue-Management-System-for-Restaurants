@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book a Table{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+
+<!-- Sign up form -->
+<div class="main">
+    <div class="control-cell">
+        <h4 class="title">Reserve a table</h4>
+        <form method="POST" class="form-login" id="reservation-form" action="/booktable/">
+            {% csrf_token %}
+            {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            <div class="form-group">
+                <i class="zmdi zmdi-account material-icons-name"></i>
+                {{ reservation_form.no_of_guests.label_tag }}
+                {{ reservation_form.no_of_guests }}
+            </div>
+            <div class="form-group date form_datetime">
+                <i class="zmdi zmdi-calendar"></i>
+                {{ reservation_form.bookdate.label_tag }}
+                {{ reservation_form.bookdate }}
+            </div>
+            <div class="form-group form-button">
+                <button type="submit" class="btn btn-primary" id="booktable">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

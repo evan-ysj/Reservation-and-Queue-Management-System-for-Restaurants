@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Take a Number{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/booksuccess.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    
+    <h3>Your number is: </h3>
+    <h1 style="color: white;font-size: 50px;">{{ request.session.number }}</h1>
+    {% if request.session.rank %}
+                  <div class="result">
+                      <p class="rank-message">There are <i style="color: white;">{{ request.session.rank }}</i> more guests in front of you</p>
+                  </div>
+    {% endif %}
+    <p>Thank you for supporting our restaurant. Please wait patiently until the waiter calls your number.</p>
+    <div class="choice">
+        <a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" href="/checkstate/">Check my current waiting state</a>
+    </div>
+    
+</div>
+
+{% endblock %}

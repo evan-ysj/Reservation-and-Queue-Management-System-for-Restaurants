@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}My Reservations{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/checkrev.css' %}">
+    <link href="{% static 'css/bootstrap-table.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div class="main">
+    <div class="control-cell">  
+
+    <h4 class="title">My Reservations</h4>
+
+    <table class="table table-hover" id="pc-block">
+        <thead>
+            <tr>
+                <th>Reserv No.</th>
+                <th>Num of Diners</th>
+                <th>Username</th>
+                <th>Dining Date</th>
+                <th>Request Time</th>
+                <th>Expired</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reservations %}
+            <tr>
+                <td>{{ r.rsv_number }}</td>
+                <td>{{ r.no_of_guests }}</td>
+                <td>{{ r.user }}</td>
+                <td>{{ r.date }}</td>
+                <td>{{ r.rsv_time }}</td>
+                <td>
+                    {% if r.expired %}
+                    <p style='color:red;'>Expired</p>
+                    {% else %}
+                    <p  style="color: rgb(1, 187, 1);">Valid</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+
+    <table class="table table-hover" id="mbl-block">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Diners</th>
+                <th>Date</th>
+                <th>Expired</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reservations %}
+            <tr>
+                <td>{{ r.rsv_number }}</td>
+                <td>{{ r.no_of_guests }}</td>
+                <td>{{ r.date }}</td>
+                <td>
+                    {% if r.expired %}
+                    <p style='color:red;'>Expired</p>
+                    {% else %}
+                    <p  style="color: rgb(1, 187, 1);">Valid</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<script>
+    //判断设备是否为手机
+    !function () {
+      var devices = ["iPhone","Android","Windows Phone"]
+      var ua = window.navigator.userAgent
+      for (var i = 0; i < devices.length; i++) {
+          if (ua.indexOf(devices[i]) != -1) {
+              document.getElementById("pc-block").style.display="none";
+              document.getElementById("mbl-block").style.display="block";
+          }
+      }
+    }()
+</script>
+
+{% endblock %}

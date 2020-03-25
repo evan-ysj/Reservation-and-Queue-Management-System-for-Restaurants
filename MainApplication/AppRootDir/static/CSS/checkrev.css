@@ -1,0 +1,108 @@
+.main{
+    margin: auto;
+    padding: 20px 15px;
+    text-align: center;
+}
+tbody{
+    color: #ddd;
+}
+
+th{
+    color: #fac564;
+}
+
+.title{
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+    color: #fac564;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
+}
+
+.control-cell{
+    max-width: 800px;
+    margin: auto;
+}
+
+td{
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: rgb(61, 63, 65)!important;
+    color: gainsboro;
+}
+
+th{
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: rgb(61, 63, 65)!important;
+}
+
+tr:hover{
+    background-color: rgba(0, 0, 0, 0.3)!important;
+    color: #fac564!important;
+}
+
+#mbl-block{
+    display: none;
+}
+
+.tab-head{
+    background-color: grey;
+    padding: 5px 10px;
+    margin: 1px;
+    color: white;
+}
+
+.active{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fac564;
+}
+
+.top-number{
+    margin: auto;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.btn{
+    width: 100px!important;
+}
+
+#myTab{
+    border: none;
+    font-size: 12px;
+}
+
+#change-state{
+    padding: 5px!important;
+}
+
+.menu-img{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    margin: 5px;
+}
+
+#imgTabContent{
+    display: table;
+    padding-top: 15px;
+}
+
+.border-img{
+    background-color: rgb(182, 182, 182);
+    margin: 5px;
+    width: 190px;
+    float: left;
+    color: black;
+    font-size: 12px;
+}
+
+.menu-img:hover{
+    width: 190px;
+    height: 190px;
+    
+    margin: 0;
+}

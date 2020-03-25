@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book a Table{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/booksuccess.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    
+    <h3><img class="sign" src="{% static 'images/success.jpg' %}" />Success!</h3>
+    <p>Thank you for making a reservation in our restaurant. Please contact us if you have any conserns.</p>
+    <div class="choice">
+        <a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" href="/booktable/">Make another reservation</a>
+        <a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" href="/checkrev/">Check my reservations</a>
+    </div>
+    
+</div>
+{% endblock %}

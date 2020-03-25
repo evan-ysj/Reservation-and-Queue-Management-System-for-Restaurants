@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Manage Tables{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/checkrev.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="control-cell">  
+
+    <h4 class="title">Tables</h4>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Capacity</th>
+                <th>State</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tables %}
+            <tr>
+                <td>{{ t.table_id }}</td>
+                <td>{{ t.cap }}</td>
+                {% if t.occupied %}
+                <td style="color: red;">Occupied</td>
+                {% else %}
+                <td style="color: rgb(1, 187, 1);">Vacant</td>
+                {% endif %}
+                <td>
+                    <a id="change-state" class="btn btn-white btn-outline-white" href="/change_table?table_id={{ t.table_id }}&occupied={{ t.occupied }}">
+                    {% if t.occupied %}
+                    Mark Vacant
+                    {% else %}
+                    Mark Occupied
+                    {% endif %}
+                    </a>
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+
+{% endblock %}

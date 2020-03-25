@@ -1,0 +1,27 @@
+.main{
+    margin:  auto;
+    max-width: 800px;
+    text-align:center;
+    padding-top: 30px;
+}
+
+.choice{
+    margin: 20px auto;
+}
+
+h3{
+    margin: 0 auto;
+    color: #fac564;
+}
+
+.sign{
+    width: 30px;
+    height: 30px;
+    margin: 0 15px;
+}
+
+.rank-message{
+    font-size: 18px;
+    color: #fac564;
+}
+

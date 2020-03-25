@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Error{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/nofunction.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    <h3>Sorry, feature is still under development...</h3>
+    <p>The feature is still under development, or the page you are looking for is no longer available. 
+        <br>Please try other features instead. Thank you for your support!</p>
+</div>
+{% endblock %}

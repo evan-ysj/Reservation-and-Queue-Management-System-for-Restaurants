@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Personal Profile{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+  <div class="control-cell">
+    <h4 class="title">Personal Profile</h4>
+    <table class="table table-hover">
+        <caption>
+          <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Delete Account</button>
+        </caption>
+
+        <tbody>
+          <tr>
+            <td>User ID</td>
+            <td>{{ request.session.user_id }}</td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td>{{ request.session.user_name }}</td>
+          </tr>
+          <tr>
+            <td>First Name</td>
+            <td>{{ request.session.first_name }}</td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td>{{ request.session.last_name }}</td>
+          </tr>
+          <tr>
+            <td>E-mail Address</td>
+            <td>{{ request.session.email }}</td>
+          </tr>
+          <tr>
+              <td></td>
+              <td></td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">
+					Please confirm your action
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				
+			</div>
+			<div class="modal-body">
+        The "Delete Account" action cannot be undone and all the personal information will be lost. 
+        Are you sure that you want to delete your account anyway? 
+			</div>
+			<div class="modal-footer">
+				<a type="button" class="btn btn-default" data-dismiss="modal">
+          Cancel
+        </a>
+				<a type="button" class="btn btn-primary" id="delete" href="/deleteuser/">
+					Delete
+        </a>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Manage Wait List{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/checkrev.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    
+    <div class="control-cell">  
+        <h4 class="title">Wait List state</h4>
+        <ul id="myTab" class="nav nav-tabs">
+            <li><a class="tab-head active" href="#type-a" data-toggle="tab">Small</a></li>
+            <li><a class="tab-head" href="#type-b" data-toggle="tab">Medium</a></li>
+            <li><a class="tab-head" href="#type-c" data-toggle="tab">Large</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane active" id="type-a">
+                <div class="top-number">
+                    Current Number: 
+                    <div class="sign"><h1>a{{ type_a.first.id }}</h1></div>
+                    <div class="sign"><a class="btn btn-primary" href="/pop_waitlist/?id={{ type_a.first.id }}">Next >></a></div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Diners</th>
+                            <th>Lastname</th>
+                            <th>TB Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for l in type_a %}
+                        <tr>
+                            <td>{{ l.id }}</td>
+                            <td>{{ l.guests }}</td>
+                            <td>{{ l.lastname }}</td>
+                            <td>{{ l.catagory }}</td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="type-b">
+                <div class="top-number">
+                    Current Number: 
+                    <div class="sign"><h1>b{{ type_b.first.id }}</h1></div>
+                    <div class="sign"><a class="btn btn-primary" href="/pop_waitlist/?id={{ type_b.first.id }}">Next >></a></div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Diners</th>
+                            <th>Lastname</th>
+                            <th>TB Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for l in type_b %}
+                        <tr>
+                            <td>{{ l.id }}</td>
+                            <td>{{ l.guests }}</td>
+                            <td>{{ l.lastname }}</td>
+                            <td>{{ l.catagory }}</td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="type-c">
+                <div class="top-number">
+                    Current Number: 
+                    <div class="sign"><h1>c{{ type_c.first.id }}</h1></div>
+                    <div class="sign"><a class="btn btn-primary" href="/pop_waitlist/?id={{ type_c.first.id }}">Next >></a></div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Diners</th>
+                            <th>Lastname</th>
+                            <th>TB Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for l in type_c %}
+                        <tr>
+                            <td>{{ l.id }}</td>
+                            <td>{{ l.guests }}</td>
+                            <td>{{ l.lastname }}</td>
+                            <td>{{ l.catagory }}</td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+.main{
+    margin: auto;
+    padding: 20px 15px;
+    text-align: center;
+}
+
+caption{
+    text-align: right;
+}
+
+.title{
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+    color: #fac564;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
+}
+
+.control-cell{
+    max-width: 800px;
+    margin: auto;
+}
+
+td{
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: rgb(61, 63, 65)!important;
+    color: gainsboro;
+}
+
+tr:hover{
+    background-color: rgba(0, 0, 0, 0.3)!important;
+}
+
+.modal-header{
+    margin: 5px!important;
+}
+
+#myModalLabel{
+    color: rgb(61, 63, 65);
+    float: left;
+}
+
+.close{
+    float: right;
+}
+
+#delete{
+    background-color: darkred;
+    border-color: darkred;
+    color: white;
+}
+
+#delete:hover{
+    border-color: darkred;
+    color: darkred;
+}
