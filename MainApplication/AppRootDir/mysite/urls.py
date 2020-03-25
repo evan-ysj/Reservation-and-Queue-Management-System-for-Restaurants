@@ -42,5 +42,6 @@ urlpatterns = [
     url(r'^managetb/', lv.managetb, name='managetb'),
     url(r'^pop_waitlist/', lv.pop_waitlist, name='pop_waitlist'),
     url(r'^change_table/', lv.change_table, name='change_table'),
+    url(r'^menu/', lv.menu, name='menu'),
 ]
 

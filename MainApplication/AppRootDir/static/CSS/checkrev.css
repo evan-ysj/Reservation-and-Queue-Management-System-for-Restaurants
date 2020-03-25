@@ -72,8 +72,37 @@ tr:hover{
 
 #myTab{
     border: none;
+    font-size: 12px;
 }
 
 #change-state{
     padding: 5px!important;
+}
+
+.menu-img{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    margin: 5px;
+}
+
+#imgTabContent{
+    display: table;
+    padding-top: 15px;
+}
+
+.border-img{
+    background-color: rgb(182, 182, 182);
+    margin: 5px;
+    width: 190px;
+    float: left;
+    color: black;
+    font-size: 12px;
+}
+
+.menu-img:hover{
+    width: 190px;
+    height: 190px;
+    
+    margin: 0;
 }

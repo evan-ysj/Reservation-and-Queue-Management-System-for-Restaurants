@@ -180,6 +180,9 @@ def change_table(request):
         print(e)
     return redirect('/managetb/')
 
+def menu(request):
+    return render(request, 'login/menu.html')
+
 def notfound(request):
     return render(request, 'nofunction.html')
 

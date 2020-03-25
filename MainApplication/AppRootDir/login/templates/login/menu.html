@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Menu{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/checkrev.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    
+    <div class="control-cell">  
+        <h4 class="title">Menu</h4>
+        <ul id="myTab" class="nav nav-tabs">
+            <li><a class="tab-head active" href="#Pizza" data-toggle="tab">Pizza</a></li>
+            <li><a class="tab-head" href="#Pasta" data-toggle="tab">Pasta</a></li>
+            <li><a class="tab-head" href="#Burger" data-toggle="tab">Burger</a></li>
+            <li><a class="tab-head" href="#Fish-Chicken" data-toggle="tab">Fish&Chicken</a></li>
+            <li><a class="tab-head" href="#Drink" data-toggle="tab">Drink</a></li>
+        </ul>
+        <div id="imgTabContent" class="tab-content">
+            <div class="tab-pane active" id="Pizza">
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pizza-1.jpg' %}" />Pizza-1</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pizza-2.jpg' %}" />Pizza-2</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pizza-3.jpg' %}" />Pizza-3</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pizza-4.jpg' %}" />Pizza-4</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pizza-5.jpg' %}" />Pizza-5</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pizza-6.jpg' %}" />Pizza-6</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pizza-7.jpg' %}" />Pizza-7</div>
+            </div>
+            <div class="tab-pane active" id="Pasta">
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pasta-1.jpg' %}" />Pasta-1</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pasta-2.jpg' %}" />Pasta-2</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/pasta-3.jpg' %}" />Pasta-3</div>
+            </div>
+            <div class="tab-pane fade" id="Burger">
+                <div class="border-img"><img class="menu-img" src="{% static 'images/burger-1.jpg' %}" />Burger-1</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/burger-2.jpg' %}" />Burger-2</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/burger-3.jpg' %}" />Burger-3</div>
+            </div>
+            <div class="tab-pane fade" id="Fish-Chicken">
+                <div class="border-img"><img class="menu-img" src="{% static 'images/fish-1.jpg' %}" />Fish-1</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/chicken-1.jpg' %}" />Chicken-2</div>
+            </div>
+            <div class="tab-pane fade" id="Drink">
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-1.jpg' %}" />Drink-1</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-2.jpg' %}" />Drink-2</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-3.jpg' %}" />Drink-3</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-4.jpg' %}" />Drink-4</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-5.jpg' %}" />Drink-5</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-6.jpg' %}" />Drink-6</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-7.jpg' %}" />Drink-7</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-8.jpg' %}" />Drink-8</div>
+                <div class="border-img"><img class="menu-img" src="{% static 'images/drink-9.jpg' %}" />Drink-9</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
