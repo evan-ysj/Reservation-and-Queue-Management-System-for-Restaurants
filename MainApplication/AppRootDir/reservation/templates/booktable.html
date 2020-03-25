@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Personal Homepage{% endblock %}
+{% block title %}Book a Table{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
@@ -26,7 +26,7 @@
                 {{ reservation_form.bookdate }}
             </div>
             <div class="form-group form-button">
-                <input type="submit" name="booktable" id="booktable" class="btn btn-primary" value="Submit"/>
+                <button type="submit" class="btn btn-primary" id="booktable">Submit</button>
             </div>
         </form>
     </div>

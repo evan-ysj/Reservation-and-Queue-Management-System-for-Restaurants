@@ -46,9 +46,13 @@ def booktable(request):
     return render(request, 'booktable.html', locals())
 
 def booksuccess(request):
+    if not request.session.get('is_login', None):
+        return redirect('/login/')
     return render(request, 'booksuccess.html', locals())
 
 def checkrev(request):
+    if not request.session.get('is_login', None):
+        return redirect('/login/')
     username = request.session['user_name']
     reservations = models.Reservation.objects.filter(user=username).all()
     return render(request, 'checkrev.html', locals())

@@ -27,3 +27,15 @@ class RegisterForm(forms.Form):
                                 widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(label="Email Address", 
                              widget=forms.EmailInput(attrs={'class': 'form-control'}))
+
+
+class ChpasswdForm(forms.Form):
+    password = forms.CharField(label="Old Password", 
+                               max_length=256, 
+                               widget=forms.PasswordInput(attrs = {'class': 'form-control'}))
+    password1 = forms.CharField(label="New Password", 
+                                max_length=256, 
+                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label="Confirm New Password", 
+                                max_length=256, 
+                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))

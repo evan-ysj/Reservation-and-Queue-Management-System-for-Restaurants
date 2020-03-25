@@ -5,7 +5,7 @@ class Table(models.Model):
     
     table_id = models.AutoField(primary_key=True)
     cap = models.IntegerField(default=4)
-    ocupied = models.BooleanField(default=False)
+    occupied = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.table_id)

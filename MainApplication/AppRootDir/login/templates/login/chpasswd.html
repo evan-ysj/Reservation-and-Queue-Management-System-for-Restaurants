@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Change Password{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="main">
+        <div class="control-cell">
+        <h4 class="title">Change Password</h4>
+          <form class='form-login' action="/chpasswd/" method="post">
+              {% csrf_token %}
+              {% if message %}
+              <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+              <div class="form-group">
+                  {{ change_form.password.label_tag }}
+                  {{ change_form.password}}
+              </div>
+              <div class="form-group">
+                  {{ change_form.password1.label_tag }}
+                  {{ change_form.password1 }}
+              </div>
+              <div class="form-group">
+                {{ change_form.password2.label_tag }}
+                {{ change_form.password2 }}
+            </div>
+              <button type="submit" class="btn btn-primary" id="chpasswd">Submit</button>
+          </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

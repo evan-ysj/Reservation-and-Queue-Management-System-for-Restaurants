@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Take a Number{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="control-cell">
+        <h4 class="title">Take a Number to join in the waitlist</h4>
+        <form method="POST" class="form-login" id="takeno-form" action="/takeno/">
+            {% csrf_token %}
+            {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            <div class="form-group">
+                {{ waitlist_form.no_of_guests.label_tag }}
+                {{ waitlist_form.no_of_guests }}
+            </div>
+            <div class="form-group date form_datetime">
+                {{ waitlist_form.name.label_tag }}
+                {{ waitlist_form.name }}
+            </div>
+            <div class="form-group form-button">
+                <button type="submit" class="btn btn-primary" id="takeno">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

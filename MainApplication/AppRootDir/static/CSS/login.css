@@ -65,16 +65,21 @@ input[type="email"] {
 }
 
 button {
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 50px;
 }
 
 #submit {
     float: right;
+    width: 49%;
+}
+
+#reset {
+    width: 49%;
 }
 
 #booktable{
-    margin-top: 20px;
+    width: 100%;
 }
 
 label{
@@ -89,4 +94,22 @@ label{
     font-style: italic;
     font-size: 14px;
     text-align: left;
+}
+
+.result{
+    font-size: 18px;
+    color: #fac564;
+    text-align: center;
+}
+
+#checkstate{
+    width: 100%;
+}
+
+#takeno{
+    width: 100%;
+}
+
+#chpasswd{
+    width: 100%;
 }

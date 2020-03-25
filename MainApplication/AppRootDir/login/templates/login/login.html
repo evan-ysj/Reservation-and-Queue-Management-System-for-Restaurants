@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Account sign in{% endblock %}
+{% block title %}Account Sign In{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
@@ -21,7 +21,7 @@
                   {{ login_form.password.label_tag }}
                   {{ login_form.password }}
               </div>
-              <button type="reset" class="btn btn-default pull-left">Reset</button>
+              <button type="reset" class="btn btn-white btn-outline-white pull-left" id="reset">Reset</button>
               <button type="submit" class="btn btn-primary pull-right" id="submit">Submit</button>
           </form>
         </div>

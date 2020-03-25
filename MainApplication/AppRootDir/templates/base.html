@@ -24,6 +24,7 @@
       <link href="{% static 'css/flaticon.css' %}" rel="stylesheet">
       <link href="{% static 'css/icomoon.css' %}" rel="stylesheet">
       <link href="{% static 'css/style.css' %}" rel="stylesheet">
+      <link href="{% static 'css/base.css' %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,13 +45,52 @@
               <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                   {% if request.session.is_login %}
+                  {% if request.session.catagory == 'customer' %}
+                  <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fac564;">Wait List</a>
+                    <div class="dropdown-menu" id="dropdown-m" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" id="dropdown-i1" href="/takeno/">Take a Number</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" id="dropdown-i2" href="/checkstate/">Check Waiting State</a>
+                    </div>
+                  </li>
                   <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
                   <li class="nav-item"><a href="/booktable/" class="nav-link">Book a Table</a></li>
                   <li class="nav-item"><a href="/checkrev/" class="nav-link">My Reservations</a></li>
-                  <li class="nav-item"><a a href="/profile/" class="nav-link">Profile</a></li>
-                  <li class="nav-item"><a href="/nofunction/" class="nav-link"><i class="zmdi zmdi-shopping-basket zmdi-hc-2x"></i></a></li>
-                  <li class="nav-item"><a href="/logout/" class="nav-link">Sign Out</a></li>
+                  <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.session.first_name }}</a>
+                    <div class="dropdown-menu" id="dropdown-m" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" id="dropdown-i1" href="/profile/">Profile</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" id="dropdown-i2" href="/chpasswd/">Change Password</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" id="dropdown-i3" href="/logout/">Sign Out</a>
+                    </div>
+                  </li>
                   {% else %}
+                  <li class="nav-item"><a href="/managetb/" class="nav-link">Manage Tables</a></li>
+                  <li class="nav-item"><a href="/managewl/" class="nav-link">Manage Wait List</a></li>
+                  <li class="nav-item"><a href="/managersv/" class="nav-link">Manage Reservations</a></li>
+                  <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.session.first_name }}</a>
+                    <div class="dropdown-menu" id="dropdown-m" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" id="dropdown-i1" href="/profile/">Profile</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" id="dropdown-i2" href="/chpasswd/">Change Password</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" id="dropdown-i3" href="/logout/">Sign Out</a>
+                    </div>
+                  </li>
+                  {% endif %}  
+                  {% else %}
+                  <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fac564;">Wait List</a>
+                    <div class="dropdown-menu" id="dropdown-m" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" id="dropdown-i1" href="/takeno/">Take a Number</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" id="dropdown-i2" href="/checkstate/">Check Waiting State</a>
+                    </div>
+                  </li>
                   <li class="nav-item"><a href="/nofunction/" class="nav-link">Menu</a></li>
                   <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                   <li class="nav-item"><a href="/login/" class="nav-link">Sign In</a></li>

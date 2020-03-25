@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Change Password{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/booksuccess.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main">
+    
+    <h3><img class="sign" src="{% static 'images/success.jpg' %}" />Success!</h3>
+    <p>Your password has been changed successfully! Click the button below to go back to home page.</p>
+    <div class="choice">
+        <a class="btn btn-white btn-outline-white px-xl-4" href="/index/">   Back to Index   </a>
+    </div>
+    
+</div>
+{% endblock %}

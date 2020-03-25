@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
+from django.db.models import Max, Min
 from . import models
-from .forms import UserForm, RegisterForm
+from .forms import UserForm, RegisterForm, ChpasswdForm
+from reservation.models import Table, Reservation
+from waitlist.models import Waitlist
 import hashlib
 
 # Create your views here.
@@ -32,10 +35,11 @@ def login(request):
                 request.session['first_name'] = user.first_name
                 request.session['last_name'] = user.last_name
                 request.session['email'] = user.email
+                request.session['catagory'] = user.catagory
                 if user.password == hash_code(password):
                     return redirect('/index/')
                 else:
-                    message = 'Incorrect passwotd!'
+                    message = 'Incorrect password!'
             except:
                 try:
                     # Login by email
@@ -46,10 +50,11 @@ def login(request):
                     request.session['first_name'] = user.first_name
                     request.session['last_name'] = user.last_name
                     request.session['email'] = user.email
+                    request.session['catagory'] = user.catagory
                     if user.password == hash_code(password):
                         return redirect('/index/')
                     else:
-                        message = 'Incorrect passwotd!'
+                        message = 'Incorrect password!'
                 except:
                     message = 'Username does not exist!'
         return render(request, 'login/login.html', locals())
@@ -97,6 +102,33 @@ def register(request):
     register_form = RegisterForm()
     return render(request, 'login/register.html', locals())
 
+def chpasswd(request):
+    if request.method == 'POST':
+        change_form = ChpasswdForm(request.POST)
+        message = 'Please check the input fields!'
+        if change_form.is_valid():
+            password = change_form.cleaned_data['password']
+            password1 = change_form.cleaned_data['password1']
+            password2 = change_form.cleaned_data['password2']
+            try:
+                user = models.User.objects.get(name=request.session['user_name'])
+                if user.password == hash_code(password) or user.password == password:
+                    if password1 != password2: 
+                        message = "The passwords you entered do not match"
+                        return render(request, 'login/register.html', locals())
+                    models.User.objects.filter(name=request.session['user_name']).update(password=hash_code(password1))
+                    return redirect('/chpasswdsuccess/')
+                else:
+                    message = 'Incorrect password!'
+                    return render(request, 'login/chpasswd.html', locals())
+            except:
+                return render(request, 'login/chpasswd.html', locals())
+    change_form = ChpasswdForm()        
+    return render(request, 'login/chpasswd.html', locals())
+
+def chpasswdsuccess(request):
+    return render(request, 'login/chpasswdsuccess.html', locals())
+
 def logout(request):
     if not request.session.get('is_login', None):
         return redirect("/index/")
@@ -113,7 +145,42 @@ def deleteuser(request):
         request.session.flush()
     return redirect('/index/')
 
-def notfount(request):
+def managewl(request):
+    type_a = Waitlist.objects.filter(catagory='a').all()
+    type_b = Waitlist.objects.filter(catagory='b').all()
+    type_c = Waitlist.objects.filter(catagory='c').all()
+    return render(request, 'login/managewl.html', locals())
+
+def managersv(request):
+    reservations = Reservation.objects.order_by('-date')
+    return render(request, 'login/managersv.html', locals())
+
+def pop_waitlist(request):
+    id = request.GET.get('id')
+    try:
+        Waitlist.objects.filter(id=id).delete()
+    except:
+        pass
+    return redirect('/managewl/')
+
+def managetb(request):
+    tables = Table.objects.order_by('table_id')
+    return render(request, 'login/managetb.html', locals())
+
+def change_table(request):
+    id = request.GET.get('table_id')
+    occupied = request.GET.get('occupied')
+    print(id, occupied=='False')
+    try:
+        if occupied == 'True':
+            Table.objects.filter(table_id=id).update(occupied=False)
+        else:
+            Table.objects.filter(table_id=id).update(occupied=True)
+    except Exception as e:
+        print(e)
+    return redirect('/managetb/')
+
+def notfound(request):
     return render(request, 'nofunction.html')
 
 def hash_code(s, salt='ece651'):
