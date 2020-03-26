@@ -8,7 +8,7 @@ class TableModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
-        Table.objects.create(table_id=2, cap=5, ocupied=False)
+        Table.objects.create(table_id=2, cap=5, occupied=False)
 
     def test_table_id_label(self):
         table = Table.objects.get(id=1)
@@ -20,10 +20,10 @@ class TableModelTest(TestCase):
         field_label = table._meta.get_field('cap').verbose_name
         self.assertEquals(field_label, 'cap')
 
-    def test_ocupied_label(self):
+    def test_occupied_label(self):
         table = Table.objects.get(id=1)
-        field_label = table._meta.get_field('ocupied').verbose_name
-        self.assertEquals(field_label, 'ocupied')
+        field_label = table._meta.get_field('occupied').verbose_name
+        self.assertEquals(field_label, 'occupied')
 
     def test_object_name_is_name(self):
         table = Table.objects.get(id=1)
