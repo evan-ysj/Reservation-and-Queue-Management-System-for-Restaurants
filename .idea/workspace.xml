@@ -2,9 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad06d8a7-e616-4292-8837-c14d1f73b9d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/login/test/test_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/login/test/test_views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBase/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/home/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/home/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/home/css/css/mixins/_text-hide.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/home/css/css/mixins/_text-hide.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/html/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/html/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/login/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/login/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/login/test/test_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/login/tests/test_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/login/test/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/login/tests/test_views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/login/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/reservation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/reservation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/reservation/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/reservation/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/reservation/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/reservation/tests/test_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/reservation/tests/test_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/static/CSS/css/mixins/_text-hide.css" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/static/CSS/css/mixins/_text-hide.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/waitlist/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/waitlist/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApplication/AppRootDir/waitlist/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApplication/AppRootDir/waitlist/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLifeCycle/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLifeCycle/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLifeCycle/Design/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLifeCycle/Design/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLifeCycle/Docs/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLifeCycle/Docs/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectLifeCycle/WeeklyMeeting/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectLifeCycle/WeeklyMeeting/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/.gitkeep" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +87,7 @@
       <updated>1585169302075</updated>
       <workItem from="1585169306172" duration="42000" />
       <workItem from="1585169382029" duration="5263000" />
-      <workItem from="1585247053459" duration="343000" />
+      <workItem from="1585247053459" duration="2077000" />
     </task>
     <servers />
   </component>

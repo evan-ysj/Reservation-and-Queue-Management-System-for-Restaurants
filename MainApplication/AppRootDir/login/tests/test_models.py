@@ -6,7 +6,7 @@ from login.models import User
 class UserModelTes(TestCase):
     @classmethod
     def setUpTestData(cls):
-        # Set up non-modified objects used by all test methods
+        # Set up non-modified objects used by all tests methods
         User.objects.create(name='Harold', password='123456qubit', email='j85shi@uwaterloo.ca', c_time='2020-02-01 '
                                                                                                        '20:49:28.273716 ')
 

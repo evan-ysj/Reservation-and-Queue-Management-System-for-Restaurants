@@ -7,7 +7,7 @@ from reservation.models import Reservation
 class TableModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        # Set up non-modified objects used by all test methods
+        # Set up non-modified objects used by all tests methods
         Table.objects.create(table_id=2, cap=5, occupied=False)
 
     def test_table_id_label(self):
@@ -34,7 +34,7 @@ class TableModelTest(TestCase):
 class ReservationModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        # Set up non-modified objects used by all test methods
+        # Set up non-modified objects used by all tests methods
         Reservation.objects.create(rsv_number = 1, table_id = 1, no_of_guests = 3, user='ece651', date='2020-5-2')
 
     def test_rsv_number_label(self):

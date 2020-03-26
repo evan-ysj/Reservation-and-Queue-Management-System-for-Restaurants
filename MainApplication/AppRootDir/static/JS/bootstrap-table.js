@@ -1110,7 +1110,7 @@
 	  symbolPrototype.constructor = SymbolWrapper;
 
 	  var symbolToString = symbolPrototype.toString;
-	  var native = String(NativeSymbol('test')) == 'Symbol(test)';
+	  var native = String(NativeSymbol('test')) == 'Symbol(tests)';
 	  var regexp = /^Symbol\((.*)\)[^)]+$/;
 	  defineProperty$2(symbolPrototype, 'description', {
 	    configurable: true,

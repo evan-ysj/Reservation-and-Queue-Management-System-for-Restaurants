@@ -333,7 +333,7 @@ XRegExp = XRegExp || (function (undef) {
         pattern = pattern === undef ? "" : String(pattern);
         flags = flags === undef ? "" : String(flags);
 
-        if (nativ.match.call(flags, duplicateFlags)) { // Don't use test/exec because they would update lastIndex
+        if (nativ.match.call(flags, duplicateFlags)) { // Don't use tests/exec because they would update lastIndex
             throw new SyntaxError("invalid duplicate regular expression flag");
         }
         // Strip/apply leading mode modifier with any combination of flags except g or y: (?imnsx)
@@ -435,7 +435,7 @@ XRegExp = XRegExp || (function (undef) {
  *   function () {return '\\x07';},
  *   {scope: 'all'}
  * );
- * XRegExp('\\a[\\a-\\n]+').test('\x07\n\x07'); // -> true
+ * XRegExp('\\a[\\a-\\n]+').tests('\x07\n\x07'); // -> true
  */
     self.addToken = addToken.off;
 
@@ -769,7 +769,7 @@ XRegExp = XRegExp || (function (undef) {
  * `sticky` arguments specify the search start position, and whether the match must start at the
  * specified position only. The `lastIndex` property of the provided regex is not used, but is
  * updated for compatibility. Also fixes browser bugs compared to the native
- * `RegExp.prototype.test` and can be used reliably cross-browser.
+ * `RegExp.prototype.tests` and can be used reliably cross-browser.
  * @memberOf XRegExp
  * @param {String} str String to search.
  * @param {RegExp} regex Regex to search with.
@@ -780,10 +780,10 @@ XRegExp = XRegExp || (function (undef) {
  * @example
  *
  * // Basic use
- * XRegExp.test('abc', /c/); // -> true
+ * XRegExp.tests('abc', /c/); // -> true
  *
  * // With pos and sticky
- * XRegExp.test('abc', /c/, 0, 'sticky'); // -> false
+ * XRegExp.tests('abc', /c/, 0, 'sticky'); // -> false
  */
     self.test = function (str, regex, pos, sticky) {
         // Do this the easy way :-)
@@ -939,7 +939,7 @@ XRegExp = XRegExp || (function (undef) {
     };
 
 /**
- * Fixes browser bugs in the native `RegExp.prototype.test`. Calling `XRegExp.install('natives')`
+ * Fixes browser bugs in the native `RegExp.prototype.tests`. Calling `XRegExp.install('natives')`
  * uses this to override the native method.
  * @private
  * @param {String} str String to search.
@@ -2103,7 +2103,7 @@ XRegExp = XRegExp || (function (undef) {
  *   }, 'x'),
  *   minutes: /^[0-5][0-9]$/
  * });
- * time.test('10:59'); // -> true
+ * time.tests('10:59'); // -> true
  * XRegExp.exec('10:59', time).minutes; // -> '59'
  */
     XRegExp.build = function (pattern, subs, flags) {
@@ -2226,7 +2226,7 @@ XRegExp = XRegExp || (function (undef) {
     extend(XRegExp.prototype, {
 
 /**
- * Implicitly calls the regex's `test` method with the first value in the provided arguments array.
+ * Implicitly calls the regex's `tests` method with the first value in the provided arguments array.
  * @memberOf XRegExp.prototype
  * @param {*} context Ignored. Accepted only for congruity with `Function.prototype.apply`.
  * @param {Array} args Array with the string to search as its first value.
@@ -2240,7 +2240,7 @@ XRegExp = XRegExp || (function (undef) {
         },
 
 /**
- * Implicitly calls the regex's `test` method with the provided string.
+ * Implicitly calls the regex's `tests` method with the provided string.
  * @memberOf XRegExp.prototype
  * @param {*} context Ignored. Accepted only for congruity with `Function.prototype.call`.
  * @param {String} str String to search.
