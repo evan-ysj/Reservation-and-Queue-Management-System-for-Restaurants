@@ -17,7 +17,9 @@ UnitTest:
   stage: unittest
   script:
     - "cd ./MainApplication/AppRootDir/"
-    - "python3 manage.py tests  --verbosity 2"
+    - "python3 manage.py test login.tests  --verbosity 2"
+    - "python3 manage.py test reservation.tests  --verbosity 2"
+    - "python3 manage.py test waitlist.tests  --verbosity 2"
 
 CoverageTest:
   stage: coveragetest

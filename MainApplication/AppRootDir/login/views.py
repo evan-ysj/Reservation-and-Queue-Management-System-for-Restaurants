@@ -39,6 +39,7 @@ def login(request):
                 if user.password == hash_code(password):
                     return redirect('/index/')
                 else:
+                    del request.session['is_login']
                     message = 'Incorrect password!'
             except:
                 try:
@@ -54,8 +55,10 @@ def login(request):
                     if user.password == hash_code(password):
                         return redirect('/index/')
                     else:
+                        del request.session['is_login']
                         message = 'Incorrect password!'
                 except:
+                    del request.session['is_login']
                     message = 'Username does not exist!'
         return render(request, 'login/login.html', locals())
     login_form = UserForm()

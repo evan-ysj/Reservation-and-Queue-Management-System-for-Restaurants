@@ -29,7 +29,7 @@ class loginViewTest(TestCase):
         session['is_login'] = True
         session.save()
         response = self.client.get(reverse('login'))
-        self.assertRedirects(response,reverse('index'))
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.client.session['is_login'], True)
         session.flush()
 
