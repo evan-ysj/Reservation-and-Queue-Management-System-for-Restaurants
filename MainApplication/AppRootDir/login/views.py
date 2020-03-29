@@ -58,7 +58,8 @@ def login(request):
                         del request.session['is_login']
                         message = 'Incorrect password!'
                 except:
-                    del request.session['is_login']
+                    if 'is_login' in request.session:
+                        del request.session['is_login']
                     message = 'Username does not exist!'
         return render(request, 'login/login.html', locals())
     login_form = UserForm()
