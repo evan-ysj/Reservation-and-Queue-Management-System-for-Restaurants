@@ -10,6 +10,10 @@ BEGIN
     UPDATE reservation_table, reservation_reservation
     SET reservation_table.occupied = TRUE
     WHERE reservation_table.table_id = reservation_reservation.table_id_id and reservation_reservation.date=CURDATE()  ;
+    
+    UPDATE reservation_reservation
+    SET reservation_reservation.expired = TRUE
+    WHERE reservation_reservation.date < CURDATE()  ;
 
 END $$
 DELIMITER ;
