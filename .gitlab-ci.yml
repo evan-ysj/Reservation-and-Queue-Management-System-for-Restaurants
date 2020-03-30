@@ -22,11 +22,13 @@ LoginTest:
 ReservationTest:
   stage: unittest
   script:
+    - "cd ./MainApplication/AppRootDir/"
     - "python3 manage.py test reservation.tests  --verbosity 2"
 
 WaitlistTest:
   stage: unittest
   script:
+    - "cd ./MainApplication/AppRootDir/"
     - "python3 manage.py test waitlist.tests  --verbosity 2"
     
 CoverageTest:
