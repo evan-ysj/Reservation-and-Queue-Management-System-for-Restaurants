@@ -13,19 +13,31 @@ before_script:
   - "echo $CI_JOB_ID / $GITLAB_USER_EMAIL"
 
 
-UnitTest:
+LoginTest:
   stage: unittest
   script:
     - "cd ./MainApplication/AppRootDir/"
     - "python3 manage.py test login.tests  --verbosity 2"
-    - "python3 manage.py test reservation.tests  --verbosity 2"
-    - "python3 manage.py test waitlist.tests  --verbosity 2"
 
+ReservationTest:
+  stage: unittest
+  script:
+    - "python3 manage.py test reservation.tests  --verbosity 2"
+
+WaitlistTest:
+  stage: unittest
+  script:
+    - "python3 manage.py test waitlist.tests  --verbosity 2"
+    
 CoverageTest:
   stage: coveragetest
   script:
     - "cd ./MainApplication/AppRootDir/"
-    - "python3 -m coverage run --source='.' manage.py tests"
+    - "python3 -m coverage run --source='.' manage.py test login.tests"
+    - "python3 -m coverage report"
+    - "python3 -m coverage run --source='.' manage.py test reservation.tests"
+    - "python3 -m coverage report"
+    - "python3 -m coverage run --source='.' manage.py test waitlist.tests"
     - "python3 -m coverage report"
  #   - "python3 -m coverage erase"
     
