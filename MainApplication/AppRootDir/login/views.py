@@ -119,7 +119,7 @@ def chpasswd(request):
                 if user.password == hash_code(password) or user.password == password:
                     if password1 != password2: 
                         message = "The passwords you entered do not match"
-                        return render(request, 'login/register.html', locals())
+                        return render(request, 'login/chpasswd.html', locals())
                     models.User.objects.filter(name=request.session['user_name']).update(password=hash_code(password1))
                     return redirect('/chpasswdsuccess/')
                 else:

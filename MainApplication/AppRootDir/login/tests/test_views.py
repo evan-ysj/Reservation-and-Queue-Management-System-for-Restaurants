@@ -1,13 +1,22 @@
 from django.test import TestCase, Client, RequestFactory
 from django.urls import reverse
 from login.models import User
-import hashlib
+from reservation.models import Table, Reservation
+from waitlist.models import Waitlist
+from login.views import hash_code
 
 class loginViewTest(TestCase):
 
     def setUp(self):
         user1 = User.objects.create(name='ece651', password=hash_code('ece651'), email='ece651@uwaterloo.ca')
         user1.save()
+        table1= Table.objects.create(table_id = 1, cap=4)
+        table2= Table.objects.create(table_id = 2, cap=8)
+        table1.save()
+        table2.save()
+        wait = Waitlist.objects.create(id=1, guests=3, lastname='xu', catagory='a')
+        wait.save()
+
 
     def test_user_created(self):
         a = User.objects.get(name='ece651')
@@ -129,8 +138,92 @@ class loginViewTest(TestCase):
         self.assertTrue('is_login' not in self.client.session)
         session.flush()
 
-def hash_code(s, salt='ece651'):
-    h = hashlib.sha256()
-    s += salt
-    h.update(s.encode())
-    return h.hexdigest()
+#get
+    def test_view_chpasswd(self):
+        response = self.client.get(reverse('chpasswd'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/chpasswd.html')
+#post
+    def test_view_chpasswd_new_password_mismatch(self):
+        session = self.client.session
+        session['user_name'] = 'ece651'
+        session.save()
+        response = self.client.post(reverse('chpasswd'), {'password':'ece651', 'password1':'87654321', 'password2':'99954321'})
+        self.assertEqual(User.objects.get(name='ece651').password, hash_code('ece651'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/chpasswd.html')
+        self.assertEqual(response.context['message'], 'The passwords you entered do not match')
+        session.flush()
+
+
+    def test_view_chpasswd_wrong_password(self):
+        session = self.client.session
+        session['user_name'] = 'ece651'
+        session.save()
+        response = self.client.post(reverse('chpasswd'), {'password':'123456', 'password1':'87654321', 'password2':'87654321'})
+        self.assertEqual(User.objects.get(name='ece651').password, hash_code('ece651'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/chpasswd.html')
+        self.assertEqual(response.context['message'], 'Incorrect password!')
+        session.flush()
+
+    def test_view_chpasswd_success(self):
+        session = self.client.session
+        session['user_name'] = 'ece651'
+        session.save()
+        response = self.client.post(reverse('chpasswd'), {'password':'ece651', 'password1':'87654321', 'password2':'87654321'})
+        self.assertEqual(User.objects.get(name='ece651').password, hash_code('87654321'))
+        self.assertRedirects(response, reverse('chpasswdsuccess'))
+        session.flush()
+
+#get
+    def test_view_chpasswdsuccess(self):
+        response = self.client.get(reverse('chpasswdsuccess'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/chpasswdsuccess.html')
+
+    def test_view_profile(self):
+        response = self.client.get(reverse('profile'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/profile.html')
+
+    def test_view_deleteuser(self):
+        session = self.client.session
+        session['user_name'] = 'ece651'
+        session.save()
+        response = self.client.get(reverse('deleteuser'))
+        self.assertRedirects(response,reverse('index'))
+        session.flush()
+
+    def test_view_managewl(self):
+        response = self.client.get(reverse('managewl'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response,'login/managewl.html')
+
+    def test_view_managersv(self):
+        response = self.client.get(reverse('managersv'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response,'login/managersv.html')
+
+    def test_view_pop_waitlist(self):
+        response = self.client.get(reverse('pop_waitlist'),{'id': 1})
+        self.assertRedirects(response,reverse('managewl'))
+
+    def test_view_managetb(self):
+        response = self.client.get(reverse('managetb'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/managetb.html')
+   
+    def test_view_change_table(self):
+        response = self.client.get(reverse('change_table'),{'table_id': 1, 'occupied': False})
+        self.assertRedirects(response,reverse('managetb'))
+
+    def test_view_menu(self):
+        response = self.client.get(reverse('menu'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/menu.html')
+
+    def test_view_notfound(self):
+        response = self.client.get(reverse('notfound'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'nofunction.html')
