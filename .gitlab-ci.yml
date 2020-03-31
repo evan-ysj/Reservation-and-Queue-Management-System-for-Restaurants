@@ -35,13 +35,9 @@ CoverageTest:
   stage: coveragetest
   script:
     - "cd ./MainApplication/AppRootDir/"
-    - "python3 -m coverage run --source='.' manage.py test login.tests"
+    - "python3 -m coverage run --source='.' manage.py test login.tests reservation.tests waitlist.tests"
     - "python3 -m coverage report"
-    - "python3 -m coverage run --source='.' manage.py test reservation.tests"
-    - "python3 -m coverage report"
-    - "python3 -m coverage run --source='.' manage.py test waitlist.tests"
-    - "python3 -m coverage report"
- #   - "python3 -m coverage erase"
+#    - "python3 -m coverage erase"
     
 IntegrationTest:
   stage: ci
