@@ -39,7 +39,7 @@ def login(request):
                 if user.password == hash_code(password):
                     return redirect('/index/')
                 else:
-                    del request.session['is_login']
+                    del request.session['is_login'] 
                     message = 'Incorrect password!'
             except:
                 try:
@@ -140,9 +140,13 @@ def logout(request):
     return redirect('/index/')
 
 def profile(request):
-    return render(request,'login/profile.html')
+    if request.session.get('is_login', None):
+        return render(request,'login/profile.html')
+    return redirect("/index/")
 
 def deleteuser(request):
+    if not request.session.get('is_login', None):
+        return redirect("/index/")
     name_db = models.User.objects.filter(name=request.session['user_name'])
     if name_db:
         name_db.delete()
