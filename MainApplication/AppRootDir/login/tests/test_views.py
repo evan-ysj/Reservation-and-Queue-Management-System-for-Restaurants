@@ -183,17 +183,37 @@ class loginViewTest(TestCase):
         self.assertTemplateUsed(response, 'login/chpasswdsuccess.html')
 
     def test_view_profile(self):
+        session = self.client.session
+        session['is_login'] = True
+        session.save()
         response = self.client.get(reverse('profile'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'login/profile.html')
+        session.flush()
 
+    def test_view_profile_not_logged_in(self):
+        response = self.client.get(reverse('profile'))
+        self.assertRedirects(response, reverse('index'))
+        
     def test_view_deleteuser(self):
         session = self.client.session
+        session['is_login'] = True
         session['user_name'] = 'ece651'
         session.save()
         response = self.client.get(reverse('deleteuser'))
+        try:
+            a=User.objects.get(name='ece651')
+        except:
+            pass
+        else:
+            raise NameError("fail to delete")
         self.assertRedirects(response,reverse('index'))
         session.flush()
+
+    def test_view_deleteuser_not_logged_in(self):
+        response = self.client.get(reverse('deleteuser'))
+        self.assertRedirects(response,reverse('index'))
+
 
     def test_view_managewl(self):
         response = self.client.get(reverse('managewl'))
