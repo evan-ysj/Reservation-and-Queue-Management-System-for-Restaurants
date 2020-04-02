@@ -1,7 +1,7 @@
 stages:
   - unittest
-  - coveragetest
   - ci
+  - coverage  
 
 cache:
   paths:
@@ -30,19 +30,18 @@ WaitlistTest:
   script:
     - "cd ./MainApplication/AppRootDir/"
     - "python3 manage.py test waitlist.tests  --verbosity 2"
-    
+
+IntegrationTest:
+  stage: ci
+  script:
+    - "cd ./MainApplication/AppRootDir/"
+    - "python3 manage.py test test_integration  --verbosity 2"
+
 CoverageTest:
-  stage: coveragetest
+  stage: coverage
   script:
     - "cd ./MainApplication/AppRootDir/"
     - "python3 -m coverage erase"
     - "python3 -m coverage run --source='.' manage.py test login.tests reservation.tests waitlist.tests"
     - "python3 -m coverage report"
     
-IntegrationTest:
-  stage: ci
-  script:
-    - "echo 'integration_test start!'"
-    #    - "python3 ./MainApplication/AppRootDir/manage.py check --verbosity 2"
-    #    - 
-    - "echo 'integration_test end!'"
