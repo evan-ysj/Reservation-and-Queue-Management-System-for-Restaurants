@@ -235,7 +235,7 @@ class loginViewTest(TestCase):
         self.assertTemplateUsed(response, 'login/managetb.html')
    
     def test_view_change_table(self):
-        response = self.client.get(reverse('change_table'),{'table_id': 1, 'occupied': False})
+        response = self.client.get(reverse('change_table'),{'table_id': 1, 'occupied': 'False'})
         self.assertRedirects(response,reverse('managetb'))
 
     def test_view_menu(self):

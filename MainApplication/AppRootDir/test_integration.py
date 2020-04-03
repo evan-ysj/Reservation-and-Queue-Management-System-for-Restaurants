@@ -16,13 +16,15 @@ class IntegrationTest(TestCase):
         table2.save()
         rsv1 = Reservation.objects.create(rsv_number = 1, table_id = table1, no_of_guests = 3, user='ece651', date='2020-5-1')
         rsv1.save()
+        wait1 = Waitlist.objects.create(id=0, guests=3, lastname='xu', catagory='a')
+        wait1.save()
 
     def test_integration_setup_success(self):
         #raise DoesNotExist error if failed
         a = User.objects.get(name='ece651', password=hash_code('ece651'), email='ece651@uwaterloo.ca')
         b = Table.objects.get(table_id = 1, cap=4)
         c = Table.objects.get(table_id = 2, cap=8)
-        #d = Waitlist.objects.get(id=1, guests=3, lastname='xu', catagory='a')
+        d = Waitlist.objects.get(id=0, guests=3, lastname='xu', catagory='a')
         e = Reservation.objects.get(rsv_number = 1, table_id = b, no_of_guests = 3, user='ece651', date='2020-5-1')
         
     def test_integration_frontend_login_book_chkrsv(self):
@@ -55,9 +57,6 @@ class IntegrationTest(TestCase):
         
         response = self.client.post(reverse('login'),{'username':'newuser', 'password':'12345678'})
         self.assertRedirects(response,reverse('index'))
-        #session = self.client.session
-        #session.save()
-        #session.flush()
 
         response = self.client.post(reverse('chpasswd'), {'password':'12345678', 'password1':'87654321', 'password2':'87654321'})
         self.assertEqual(User.objects.get(name='newuser').password, hash_code('87654321'))
@@ -94,14 +93,41 @@ class IntegrationTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkstate.html')
 
-        response = self.client.post(reverse('checkstate'),{'number': "a0", 'name':'chen'})
+        response = self.client.post(reverse('checkstate'),{'number': self.client.session['number'], 'name':'chen'})
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'checkstate.html')
+        self.assertEqual(response.context['result'], 1)
+                                   
+    def test_integration_backend(self):
+# autonatical change of table state is not implemented
+        response = self.client.get(reverse('change_table'),{'table_id': 1, 'occupied': 'False'})
+        self.assertRedirects(response,reverse('managetb'))
+
+        response = self.client.get(reverse('managetb'))
+        self.assertEqual(Table.objects.get(table_id=1).occupied, True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login/managetb.html')
+               
+#    def test_integration_frontback_interaction_rsv(self):
+# cancelling reservation is not implemented
+
+    def test_integration_frontback_interaction_waitlist(self):   
+# frontend  
+        response = self.client.post(reverse('takeno'),{'no_of_guests': 3, 'name':'lu'})
+        waitlist_number = self.client.session['number']
+        self.assertRedirects(response,reverse('takesuccess')) 
+# backend
+        response = self.client.get(reverse('managewl'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response,'login/managewl.html')
+
+        response = self.client.get(reverse('pop_waitlist'),{'id': 0})
+        self.assertRedirects(response,reverse('managewl'))
+#frontend
+        response = self.client.post(reverse('checkstate'),{'number': waitlist_number})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkstate.html')
         self.assertEqual(response.context['result'], 0)
-                                   
-#    def test_integration_backend(self):
-#        pass
-               
-#    def test_integration_frontback_interaction_rsv(self):
 
-#    def test_integration_frontback_interaction_waitlist(self):              
+
+        

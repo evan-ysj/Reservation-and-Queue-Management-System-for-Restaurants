@@ -54,19 +54,19 @@ class waitlistViewTest(TestCase):
 
 #post
     def test_view_checkstate_success(self):
-        response = self.client.post(reverse('checkstate'),{'number': "a1", 'name':'xu'})
+        response = self.client.post(reverse('checkstate'),{'number': "a1"})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkstate.html')
         self.assertEqual(response.context['result'], 0)
 
     def test_view_checkstate_invalid_number(self):
-        response = self.client.post(reverse('checkstate'),{'number': "a2", 'name':'xu'})
+        response = self.client.post(reverse('checkstate'),{'number': "a2"})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkstate.html')
         self.assertEqual(response.context['message'], "Invalid number!")
 
     def test_view_checkstate_invalid_number2(self):
-        response = self.client.post(reverse('checkstate'),{'number': "a", 'name':'xu'})
+        response = self.client.post(reverse('checkstate'),{'number': "a"})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkstate.html')
         self.assertEqual(response.context['message'], "Invalid number!")
