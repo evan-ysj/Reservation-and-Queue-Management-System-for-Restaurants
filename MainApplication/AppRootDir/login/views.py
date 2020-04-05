@@ -39,7 +39,6 @@ def login(request):
                 if user.password == hash_code(password):
                     return redirect('/index/')
                 else:
-                    del request.session['is_login'] 
                     message = 'Incorrect password!'
             except:
                 try:
@@ -55,11 +54,8 @@ def login(request):
                     if user.password == hash_code(password):
                         return redirect('/index/')
                     else:
-                        del request.session['is_login']
                         message = 'Incorrect password!'
                 except:
-                    if 'is_login' in request.session:
-                        del request.session['is_login']
                     message = 'Username does not exist!'
         return render(request, 'login/login.html', locals())
     login_form = UserForm()
@@ -107,6 +103,8 @@ def register(request):
     return render(request, 'login/register.html', locals())
 
 def chpasswd(request):
+    if not request.session.get('is_login', None):
+        return redirect('/login/')
     if request.method == 'POST':
         change_form = ChpasswdForm(request.POST)
         message = 'Please check the input fields!'
@@ -119,7 +117,7 @@ def chpasswd(request):
                 if user.password == hash_code(password) or user.password == password:
                     if password1 != password2: 
                         message = "The passwords you entered do not match"
-                        return render(request, 'login/chpasswd.html', locals())
+                        return render(request, 'login/register.html', locals())
                     models.User.objects.filter(name=request.session['user_name']).update(password=hash_code(password1))
                     return redirect('/chpasswdsuccess/')
                 else:
@@ -131,6 +129,8 @@ def chpasswd(request):
     return render(request, 'login/chpasswd.html', locals())
 
 def chpasswdsuccess(request):
+    if not request.session.get('is_login', None):
+        return redirect('/login/')
     return render(request, 'login/chpasswdsuccess.html', locals())
 
 def logout(request):
@@ -140,13 +140,13 @@ def logout(request):
     return redirect('/index/')
 
 def profile(request):
-    if request.session.get('is_login', None):
-        return render(request,'login/profile.html')
-    return redirect("/index/")
+    if not request.session.get('is_login', None):
+        return redirect('/login/')
+    return render(request,'login/profile.html')
 
 def deleteuser(request):
     if not request.session.get('is_login', None):
-        return redirect("/index/")
+        return redirect('/login/')
     name_db = models.User.objects.filter(name=request.session['user_name'])
     if name_db:
         name_db.delete()
@@ -154,16 +154,22 @@ def deleteuser(request):
     return redirect('/index/')
 
 def managewl(request):
+    if request.session.get('catagory', None) != 'staff':
+        return redirect('/login/')
     type_a = Waitlist.objects.filter(catagory='a').all()
     type_b = Waitlist.objects.filter(catagory='b').all()
     type_c = Waitlist.objects.filter(catagory='c').all()
     return render(request, 'login/managewl.html', locals())
 
 def managersv(request):
+    if request.session.get('catagory', None) != 'staff':
+        return redirect('/login/')
     reservations = Reservation.objects.order_by('-date')
     return render(request, 'login/managersv.html', locals())
 
 def pop_waitlist(request):
+    if request.session.get('catagory', None) != 'staff':
+        return redirect('/login/')
     id = request.GET.get('id')
     try:
         Waitlist.objects.filter(id=id).delete()
@@ -172,13 +178,17 @@ def pop_waitlist(request):
     return redirect('/managewl/')
 
 def managetb(request):
+    if request.session.get('catagory', None) != 'staff':
+        return redirect('/login/')
     tables = Table.objects.order_by('table_id')
     return render(request, 'login/managetb.html', locals())
 
 def change_table(request):
+    if request.session.get('catagory', None) != 'staff':
+        return redirect('/login/')
     id = request.GET.get('table_id')
     occupied = request.GET.get('occupied')
-    print(id, occupied=='False')
+    # print(id, occupied=='False')
     try:
         if occupied == 'True':
             Table.objects.filter(table_id=id).update(occupied=False)
