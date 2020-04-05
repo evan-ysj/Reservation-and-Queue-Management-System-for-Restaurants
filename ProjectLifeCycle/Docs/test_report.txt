@@ -1,16 +1,29 @@
-$ python3 manage.py test  --verbosity 2
-Creating test database for alias 'default' ('test_django')...
-test_RegisterForm_miss_fields (login.tests.test_forms.User_Form_Register_Form_Test) ... ok
-test_RegisterForm_valid (login.tests.test_forms.User_Form_Register_Form_Test) ... ok
-test_UserForm_valid (login.tests.test_forms.User_Form_Register_Form_Test) ... ok
+#test_login
+
+System check identified no issues (0 silenced).
 test_c_time_label (login.tests.test_models.UserModelTes) ... ok
+test_catagory_label (login.tests.test_models.UserModelTes) ... ok
+test_catagory_max_length (login.tests.test_models.UserModelTes) ... ok
 test_email_label (login.tests.test_models.UserModelTes) ... ok
+test_first_name_label (login.tests.test_models.UserModelTes) ... ok
+test_first_name_max_length (login.tests.test_models.UserModelTes) ... ok
+test_last_name_label (login.tests.test_models.UserModelTes) ... ok
+test_last_name_max_length (login.tests.test_models.UserModelTes) ... ok
 test_name_label (login.tests.test_models.UserModelTes) ... ok
 test_name_max_length (login.tests.test_models.UserModelTes) ... ok
 test_object_name_is_name (login.tests.test_models.UserModelTes) ... ok
 test_password_label (login.tests.test_models.UserModelTes) ... ok
 test_password_max_length (login.tests.test_models.UserModelTes) ... ok
 test_user_created (login.tests.test_views.loginViewTest) ... ok
+test_view_change_table (login.tests.test_views.loginViewTest) ... 1 True
+ok
+test_view_chpasswd (login.tests.test_views.loginViewTest) ... ok
+test_view_chpasswd_new_password_mismatch (login.tests.test_views.loginViewTest) ... ok
+test_view_chpasswd_success (login.tests.test_views.loginViewTest) ... ok
+test_view_chpasswd_wrong_password (login.tests.test_views.loginViewTest) ... ok
+test_view_chpasswdsuccess (login.tests.test_views.loginViewTest) ... ok
+test_view_deleteuser (login.tests.test_views.loginViewTest) ... ok
+test_view_deleteuser_not_logged_in (login.tests.test_views.loginViewTest) ... ok
 test_view_index (login.tests.test_views.loginViewTest) ... ok
 test_view_login_already_logged_in (login.tests.test_views.loginViewTest) ... ok
 test_view_login_bad_password (login.tests.test_views.loginViewTest) ... ok
@@ -20,6 +33,14 @@ test_view_login_nonexist_user (login.tests.test_views.loginViewTest) ... ok
 test_view_login_page (login.tests.test_views.loginViewTest) ... ok
 test_view_logout (login.tests.test_views.loginViewTest) ... ok
 test_view_logout_logged_in (login.tests.test_views.loginViewTest) ... ok
+test_view_managersv (login.tests.test_views.loginViewTest) ... ok
+test_view_managetb (login.tests.test_views.loginViewTest) ... ok
+test_view_managewl (login.tests.test_views.loginViewTest) ... ok
+test_view_menu (login.tests.test_views.loginViewTest) ... ok
+test_view_notfound (login.tests.test_views.loginViewTest) ... ok
+test_view_pop_waitlist (login.tests.test_views.loginViewTest) ... ok
+test_view_profile (login.tests.test_views.loginViewTest) ... ok
+test_view_profile_not_logged_in (login.tests.test_views.loginViewTest) ... ok
 test_view_register (login.tests.test_views.loginViewTest) ... ok
 test_view_register_already_logged_in (login.tests.test_views.loginViewTest) ... ok
 test_view_register_blank (login.tests.test_views.loginViewTest) ... ok
@@ -29,35 +50,133 @@ test_view_register_same_name_user (login.tests.test_views.loginViewTest) ... ok
 test_view_register_success (login.tests.test_views.loginViewTest) ... ok
 
 ----------------------------------------------------------------------
-Ran 27 tests in 0.349s
+Ran 46 tests in 2.154s
 
 OK
 
+#test_reservation
+
+System check identified no issues (0 silenced).
+test_date_label (reservation.tests.test_models.ReservationModelTest) ... ok
+test_expired_label (reservation.tests.test_models.ReservationModelTest) ... ok
+test_no_of_guests_label (reservation.tests.test_models.ReservationModelTest) ... ok
+test_object_name_is_name (reservation.tests.test_models.ReservationModelTest) ... ok
+test_rsv_number_label (reservation.tests.test_models.ReservationModelTest) ... ok
+test_rsv_time_label (reservation.tests.test_models.ReservationModelTest) ... ok
+test_table_id_label (reservation.tests.test_models.ReservationModelTest) ... ok
+test_user_label (reservation.tests.test_models.ReservationModelTest) ... ok
+test_cap_label (reservation.tests.test_models.TableModelTest) ... ok
+test_object_name_is_name (reservation.tests.test_models.TableModelTest) ... ok
+test_occupied_label (reservation.tests.test_models.TableModelTest) ... ok
+test_table_id_label (reservation.tests.test_models.TableModelTest) ... ok
+test_object_created (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_booksuccess (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_booksuccess_not_logged_in (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_booktable (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_booktable_bad_date (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_booktable_duplicate_date (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_booktable_not_logged_in (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_booktable_success (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_checkrev (reservation.tests.test_view.reserveViewTest) ... ok
+test_view_checkrev_not_logged_in (reservation.tests.test_view.reserveViewTest) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.818s
+
+OK
+
+#test_waitlist
+
+System check identified no issues (0 silenced).
+test_catagory_label (waitlist.tests.test_models.WaitlistModelTest) ... ok
+test_catagory_max_length (waitlist.tests.test_models.WaitlistModelTest) ... ok
+test_guests_label (waitlist.tests.test_models.WaitlistModelTest) ... ok
+test_id_label (waitlist.tests.test_models.WaitlistModelTest) ... ok
+test_lastname_label (waitlist.tests.test_models.WaitlistModelTest) ... ok
+test_name_max_length (waitlist.tests.test_models.WaitlistModelTest) ... ok
+test_object_name_is_name (waitlist.tests.test_models.WaitlistModelTest) ... ok
+test_object_created (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_checkstate_invalid_number (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_checkstate_invalid_number2 (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_checkstate_render (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_checkstate_success (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_takeno (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_takeno_fail (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_takeno_success (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_takesuccess (waitlist.tests.test_views.waitlistViewTest) ... ok
+test_view_takesuccess_not_take (waitlist.tests.test_views.waitlistViewTest) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.372s
+
+OK
+
+#test_integration
+
+System check identified no issues (0 silenced).
+test_integration_backend (test_integration.IntegrationTest) ... 1 True
+ok
+test_integration_frontback_interaction_waitlist (test_integration.IntegrationTest) ... ok
+test_integration_frontend_login_book_chkrsv (test_integration.IntegrationTest) ... ok
+test_integration_frontend_login_profile_deluser (test_integration.IntegrationTest) ... ok
+test_integration_frontend_register_login_chpasswd_logout (test_integration.IntegrationTest) ... ok
+test_integration_frontend_takeno_takesuccess_chkstate (test_integration.IntegrationTest) ... ok
+test_integration_setup_success (test_integration.IntegrationTest) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.523s
+
+OK
+
+#Coverage report
 
 
+Name                                                      Stmts   Miss  Cover
+-----------------------------------------------------------------------------
+login/__init__.py                                             2      0   100%
+login/admin.py                                                3      0   100%
+login/apps.py                                                 3      3     0%
+login/forms.py                                               15      0   100%
+login/migrations/0001_initial.py                              5      0   100%
+login/migrations/0002_auto_20200202_0407.py                   4      0   100%
+login/migrations/0003_user_catagory.py                        4      0   100%
+login/migrations/__init__.py                                  0      0   100%
+login/models.py                                              15      0   100%
+login/tests/test_models.py                                   57      0   100%
+login/tests/test_views.py                                   193      1    99%
+login/views.py                                              165     10    94%
+manage.py                                                    12      2    83%
+mysite/__init__.py                                            2      0   100%
+mysite/asgi.py                                                4      4     0%
+mysite/settings.py                                           19      0   100%
+mysite/urls.py                                                6      0   100%
+mysite/wsgi.py                                                4      4     0%
+reservation/__init__.py                                       0      0   100%
+reservation/admin.py                                         14      0   100%
+reservation/apps.py                                           3      3     0%
+reservation/forms.py                                          4      0   100%
+reservation/migrations/0001_initial.py                        6      0   100%
+reservation/migrations/0002_reservation_no_of_guests.py       4      0   100%
+reservation/migrations/0003_auto_20200324_2221.py             4      0   100%
+reservation/migrations/0004_auto_20200324_2226.py             4      0   100%
+reservation/migrations/__init__.py                            0      0   100%
+reservation/models.py                                        23      0   100%
+reservation/tests/test_models.py                             58      0   100%
+reservation/tests/test_view.py                               88      2    98%
+reservation/views.py                                         45      5    89%
+test_integration.py                                          97      1    99%
+waitlist/__init__.py                                          0      0   100%
+waitlist/admin.py                                             1      0   100%
+waitlist/apps.py                                              3      3     0%
+waitlist/forms.py                                             6      0   100%
+waitlist/migrations/0001_initial.py                           5      0   100%
+waitlist/migrations/0002_auto_20200322_2009.py                4      0   100%
+waitlist/migrations/0003_auto_20200322_2049.py                4      0   100%
+waitlist/migrations/__init__.py                               0      0   100%
+waitlist/models.py                                           12      0   100%
+waitlist/tests/test_models.py                                33      0   100%
+waitlist/tests/test_views.py                                 54      0   100%
+waitlist/views.py                                            66     15    77%
+-----------------------------------------------------------------------------
+TOTAL                                                      1051     53    95%
 
-
-
-Name                                          Stmts   Miss  Cover
------------------------------------------------------------------
-login/__init__.py                                 2      0   100%
-login/admin.py                                    3      0   100%
-login/apps.py                                     3      3     0%
-login/forms.py                                   11      0   100%
-login/migrations/0001_initial.py                  5      0   100%
-login/migrations/0002_auto_20200202_0407.py       4      0   100%
-login/migrations/__init__.py                      0      0   100%
-login/models.py                                  14      0   100%
-login/tests/__init__.py                           0      0   100%
-login/tests/test_forms.py                        16      0   100%
-login/tests/test_models.py                       33      0   100%
-login/tests/test_views.py                       101      0   100%
-login/views.py                                   85      1    99%
-manage.py                                        12      2    83%
-mysite/__init__.py                                2      0   100%
-mysite/asgi.py                                    4      4     0%
-mysite/settings.py                               19      0   100%
-mysite/urls.py                                    4      0   100%
-mysite/wsgi.py                                    4      4     0%
------------------------------------------------------------------
-TOTAL                                           322     14    96%
